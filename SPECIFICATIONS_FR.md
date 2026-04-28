@@ -2,14 +2,14 @@
 Document : SPECIFICATIONS_FR.md
 Author : Bruno DELNOZ
 Email : bruno.delnoz@protonmail.com
-Version : v1.2.0
-Date : 2026-04-28 00:00:00 UTC
+Version : v1.3.0
+Date : 2026-04-28 12:00:00 UTC
 -->
 # SPECIFICATIONS_FR.md
 ## Objectif
 Chemin d'authentification local Linux par biométrie vocale + PIN via PAM/LightDM, optionnel et réversible, avec fallback mot de passe toujours actif.
 ## Périmètre
-Baseline exécutable du dépôt: scripts shell, helpers/CLI Python, venv obligatoire, flux simulation-first.
+Baseline exécutable du dépôt: scripts shell, helpers/CLI Python, venv obligatoire, flux simulation-first, et validation explicite de compatibilité Python 3.13.12.
 ## Comportement vérifié
 Dépôt initial documentation-first sans implémentation exécutable; cette tâche ajoute une baseline prototype.
 ## Exigences fonctionnelles
@@ -39,3 +39,5 @@ Cloud obligatoire, non-Linux, remplacement du login password.
 - v1.2.0 (2026-04-28 00:00:00 UTC, Bruno DELNOZ): Ajout baseline exécutable venv-first et inventaire scripts/runtime.
 - v1.1.0: Entrée historique conservée.
 - v1.0.0: Entrée historique conservée.
+
+- v1.3.0 (2026-04-28 12:00:00 UTC, Bruno DELNOZ): Renforcement venv strict, validation imports critiques, et gestion explicite Python 3.13.12 pour prérequis/install/doctor.
