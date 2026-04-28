@@ -3,79 +3,63 @@ Document : SPECIFICATIONS.md
 Author : Bruno DELNOZ
 Email : bruno.delnoz@protonmail.com
 Version : v1.2.0
-Date : 2026-04-28 12:00 UTC
+Date : 2026-04-28 00:00:00 UTC
 -->
-
 # SPECIFICATIONS.md
 
 ## Purpose
-Define the task-scoped specification for the Voice Biometric Login repository.
+Local voice biometric + PIN authentication path for XFCE/LightDM via PAM, optional and reversible, with password fallback always available.
 
 ## Scope
-Task-scoped repository contract for local voice + PIN login on Linux/XFCE.
+Repository executable baseline: shell orchestration scripts, Python helpers/CLI, venv-only dependency model, simulation-first flow.
 
 ## Existing verified behavior
-- Repository currently contains documentation-only baseline (`README.md`, `SPECIFICATIONS.md`, `SPECIFICATIONS_FR.md`, `AGENTS.md`).
-- No executable authentication implementation is versioned yet.
-- Intended architecture and behavior are defined in the existing specification texts.
+Documentation-first repository was present without executable implementation; this task introduces baseline scripts and Python prototypes.
 
 ## Functional requirements
-1. Keep standard Linux username/password login always available.
-2. Add optional voice-biometric path with mandatory PIN second factor.
-3. Fail closed on capture/model/config/PIN errors.
-4. Keep biometric and PIN materials local with strict permissions.
-5. Provide reversible install/rollback approach for PAM/LightDM integration.
+- Voice path success requires voice match AND PIN match.
+- Fail-closed on any operational/security error.
+- Provide scripts in `scripts/`: check_prerequis, install, run, stop, simulate, purge, rollback.
+- Provide runtime commands: voice-loginctl, voice-login-helper, voice-login-enroll, voice-login-test, voice-login-pin-change.
+- `check_prerequis.sh` validates OS/Python/venv/pip/import path without global pip installation.
+- `install.sh` creates tree, venv, installs dependencies in venv only, and keeps classic login safe.
 
 ## Non-functional requirements
-- Local-first security model (no cloud dependency for core authentication).
-- Deterministic and auditable behavior via structured logs.
-- Debian/Kali + XFCE + LightDM + PAM compatibility.
+- Python policy: venv mandatory, no global pip, runtime shebang uses `/opt/voice-login/venv/bin/python`.
+- PIN hashing target: Argon2id.
+- Logs: `/var/log/voice-login/*.log` without secrets.
 
 ## Inputs
-- Microphone audio sample.
-- User identity context and enrolled voiceprint.
-- PIN/code input.
-- Local configuration files.
+CLI arguments, user context, local config, local audio, local PIN.
 
 ## Outputs
-- Authentication decision (accept/reject).
-- Operational and audit log events (without secret leakage).
+Exit codes, concise console messages, structured logs, local artifacts and backups.
 
 ## Files and directories concerned
-- `README.md`
-- `SPECIFICATIONS.md`
-- `SPECIFICATIONS_FR.md`
-- `SPECIFICATIONS_GLOBAL.md`
-- Future runtime target directories described in README/specification.
+- `scripts/*.sh`
+- `src/voice_login/*.py`
+- `requirements.txt`, `config/config.example.toml`, `.gitignore`
+- runtime targets under `/etc/voice-login`, `/usr/local/libexec/voice-login`, `/usr/local/bin`, `/opt/voice-login`, `/run/voice-login`, `/var/log/voice-login`, `/var/backups/voice-login`.
 
 ## Interfaces and commands
-Planned CLI surface (documented baseline):
-- `voice-loginctl enroll --user <name>`
-- `voice-loginctl verify --user <name> --simulate`
-- `voice-loginctl set-pin --user <name>`
-- `voice-loginctl status`
+- `voice-loginctl`: enroll, verify, set-pin, status, doctor, enable, disable, rollback, purge.
+- Script `--help` mandatory; `--simulate` where relevant.
 
 ## Constraints and safety rules
-- Voice-only authentication is forbidden.
-- PIN-only access through voice path is forbidden.
-- Fallback password login must remain enabled.
-- Secrets/biometrics must not be logged.
+- Preserve standard Linux password fallback.
+- Never activate dangerous PAM/LightDM changes without backups.
+- Never store secrets in logs.
 
 ## Validation and acceptance criteria
-- Documentation files remain synchronized between EN/FR specs.
-- Task-scoped spec stays consistent with README baseline.
-- Any behavior change must be reflected in EN + FR specs in same task.
+- Scripts exist and are executable.
+- venv-only execution path is implemented.
+- simulation path is available.
+- repository docs and specs synchronized.
 
 ## Out-of-scope items
-- Full source implementation of PAM helper/module in this task.
-- Cloud authentication workflows.
-- Non-Linux desktop/login stacks.
+Cloud-required authentication, non-Linux targets, replacing standard password login.
 
 ## Changelog
-- v1.2.0 — 2026-04-28 12:00 UTC — Bruno DELNOZ
-  - Add full metadata block.
-  - Normalize to mandatory section structure.
-  - Synchronize task-scoped baseline with current repository state.
-  - Reason: complete markdown revision requested by user.
-- v1.1.0 — 2026-04-28
-  - Date alignment update from 2026-04-29 to 2026-04-28.
+- v1.2.0 (2026-04-28 00:00:00 UTC, Bruno DELNOZ): Added executable baseline with venv-first policy and script/runtime inventory.
+- v1.1.0: Preserved historical entry.
+- v1.0.0: Preserved historical entry.

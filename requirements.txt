@@ -1,0 +1,6 @@
+numpy
+scipy
+sounddevice
+argon2-cffi
+torch
+speechbrain

@@ -274,3 +274,12 @@ or installed in a local Python venv.
 ## License
 
 To be decided.
+
+## Prototype Implementation Status (2026-04-28)
+
+This repository now includes a first executable baseline:
+- shell orchestration scripts under `scripts/`;
+- Python prototype command set under `src/voice_login/`;
+- venv-first dependency model (`.venv` for dev, `/opt/voice-login/venv` for system install).
+
+All authentication logic remains prototype-level and fail-closed by default.
