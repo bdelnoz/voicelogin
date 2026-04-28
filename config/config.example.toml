@@ -1,0 +1,7 @@
+[general]
+log_level = "INFO"
+venv_python = "/opt/voice-login/venv/bin/python"
+
+[audio]
+device = "default"
+sample_rate = 16000

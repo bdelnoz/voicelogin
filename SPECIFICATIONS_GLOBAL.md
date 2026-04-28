@@ -2,72 +2,38 @@
 Document : SPECIFICATIONS_GLOBAL.md
 Author : Bruno DELNOZ
 Email : bruno.delnoz@protonmail.com
-Version : v1.0.0
-Date : 2026-04-28 12:00 UTC
+Version : v1.1.0
+Date : 2026-04-28 00:00:00 UTC
 -->
-
 # SPECIFICATIONS_GLOBAL.md
-
 ## Purpose
-Define the stable, repository-wide baseline for Voice Biometric Login.
-
+Global repository baseline for local voice-login project targeting Kali/Debian XFCE/LightDM with PAM.
 ## Global scope
-Repository-level architecture, constraints, interfaces, and long-term expectations.
-
+Documentation + implementation conventions, security model, venv-only Python policy, reversible auth integration.
 ## Stable verified repository behavior
-- Documentation-first repository currently.
-- Main design target: local biometric speaker verification + PIN for Linux graphical login.
-- Standard Linux password login remains mandatory fallback.
-
+Voice path is optional and must never remove username/password fallback.
 ## Repository architecture
-- Documentation baseline in root Markdown files.
-- Planned implementation areas: PAM integration, voice helper tooling, enrollment and policy management.
-
+Shell orchestration in `scripts/`; Python runtime logic in `src/voice_login`; local configuration in `config/`.
 ## Global functional requirements
-1. Two-factor local flow on voice path (voice + PIN).
-2. Reversible integration with safe rollback.
-3. Local storage and strict permissions for sensitive artifacts.
-
+Voice+PIN dual factor; fail-closed; rollback capability; non-destructive simulation path.
 ## Global non-functional requirements
-- Security-first default and fail-closed behavior.
-- No secret leakage in logs.
-- Debian/Kali + LightDM/PAM compatibility baseline.
-
+No global pip installs; no secrets in logs; local-only biometric data; sensitive permissions enforced.
 ## Global inputs
-- Audio capture.
-- User identity and local enrollment data.
-- Local policy/configuration.
-
+CLI arguments, local user/audio/PIN/config data.
 ## Global outputs
-- Authentication pass/fail decision.
-- Structured audit/operational logs.
-
+Deterministic exits, logs, local artifacts, backups.
 ## Global files and directories
-- Root docs: `README.md`, `AGENTS.md`, `SPECIFICATIONS*.md`.
-- Planned runtime paths under `/etc/voice-login`, `/var/lib/voice-login`, `/var/log/voice-login`, `/run/voice-login`.
-
+`scripts/`, `src/voice_login/`, `config/`, docs/specs, plus runtime Linux target directories.
 ## Global interfaces and commands
-Planned control entrypoint: `voice-loginctl` and helper tools described in README/spec.
-
+`voice-loginctl` command family and companion helpers.
 ## Global constraints and safety rules
-- Never disable standard password login implicitly.
-- Never allow voice-only or PIN-only on voice path.
-- Keep biometric and PIN assets local and protected.
-
+Always keep classic login available; backup before PAM/LightDM changes; rollback mandatory.
 ## Global validation and acceptance criteria
-- Repository docs remain coherent across README and specifications.
-- Global vs task-scoped boundaries are explicit and non-contradictory.
-
+Scripts and helpers executable, venv policy enforced, simulation available, docs synchronized.
 ## Task-scoped specification boundary
-Task-level deltas and operational refinements belong to:
-- `SPECIFICATIONS.md`
-- `SPECIFICATIONS_FR.md`
-
+Task-specific implementation details remain in `SPECIFICATIONS.md` and `SPECIFICATIONS_FR.md`.
 ## Out-of-scope items
-- Production packaging/release pipeline details.
-- Kernel/audio-driver tuning guidance per hardware.
-
+Cloud-mandatory auth, non-Linux targets, replacing standard password login.
 ## Changelog
-- v1.0.0 — 2026-04-28 12:00 UTC — Bruno DELNOZ
-  - Initial global baseline created from current repository state.
-  - Reason: mandatory global specification file setup.
+- v1.1.0 (2026-04-28 00:00:00 UTC, Bruno DELNOZ): Aligned global baseline with executable venv-first prototype architecture.
+- v1.0.0: Historical baseline entry preserved.
