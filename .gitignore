@@ -8,3 +8,25 @@ __pycache__/
 *.flac
 *.embedding
 pin.hash
+# PROJECT SPECIFIC
+uploads
+*.pid
+__pycache__
+*.log
+*.db
+creation_log
+*-swp
+*.tmp
+*.bak
+# ========================================
+# Template: shell
+# Added: 2026-02-04 22:19:59
+output/
+infos/
+result/
+backup/
+*.zip
+*.tar.gz
+*.rar
+certs/
+secrets/
