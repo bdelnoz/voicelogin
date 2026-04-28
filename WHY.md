@@ -13,9 +13,16 @@ This project documents a local, reversible voice-biometric + PIN path to strengt
 - Local processing first.
 - Fail-closed behavior.
 - Strict permissions and auditable operational logs.
+- Reversible operational workflow (install/rollback/purge scripts).
 
 ## Why venv-first and no global pip
 
 Kali/Debian environments can diverge quickly when Python packages are installed globally.
 This project enforces isolated virtual environments to keep authentication components deterministic,
 reversible, and safer to audit.
+
+## Why repository specifications are strict
+
+The project keeps synchronized specification files (`SPECIFICATIONS.md`,
+`SPECIFICATIONS_FR.md`, and `SPECIFICATIONS_GLOBAL.md`) to ensure behavior,
+security guarantees, and implementation state remain auditable over time.

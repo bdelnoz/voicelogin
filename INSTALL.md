@@ -1,15 +1,16 @@
 # INSTALL
 
 ## Current repository state
-This repository is currently documentation-first.
-No installable runtime binary is shipped yet.
+This repository now provides a runnable prototype baseline with shell orchestration
+scripts and Python CLI helpers for local validation workflows.
 
 ## Planned installation target
 The project intends to support Debian/Kali Linux with XFCE + LightDM and PAM.
 
 ## Status
 - Documentation baseline: available.
-- Implementation scripts/binaries: pending.
+- Implementation scripts: available in `scripts/`.
+- Python command prototypes: available in `src/voice_login/`.
 
 ## Prototype Quick Start (2026-04-28)
 
@@ -19,6 +20,8 @@ The project intends to support Debian/Kali Linux with XFCE + LightDM and PAM.
    - `scripts/install.sh --simulate`
 3. Run simulation flow:
    - `scripts/simulate.sh --help`
+4. Run doctor checks from CLI prototype:
+   - `voice-loginctl doctor`
 
 Use `--exec` only in controlled root environment.
 

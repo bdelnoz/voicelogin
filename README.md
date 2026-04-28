@@ -116,10 +116,15 @@ Voice-only login
 
 ```text
 README.md               — this file
-SPECIFICATIONS.md       — English technical contract
-SPECIFICATIONS_FR.md    — French reference version (authoritative)
-CHANGELOG.md            — version history  [pending]
-WHY.md                  — design rationale and threat model context  [pending]
+INSTALL.md              — installation and bootstrap workflow
+WHY.md                  — project rationale and security positioning
+CHANGELOG.md            — chronological project changes
+SPECIFICATIONS.md       — task-scoped English technical contract
+SPECIFICATIONS_FR.md    — task-scoped French companion contract
+SPECIFICATIONS_GLOBAL.md— repository-wide baseline contract
+scripts/                — prerequisite, install, run, stop, simulate, purge, rollback
+src/voice_login/        — Python CLI and helper entry points
+config/                 — runtime configuration templates
 AGENTS.md               — instructions for AI coding agents (Claude Code)
 CLAUDE.md               — symlink → AGENTS.md
 .gitignore

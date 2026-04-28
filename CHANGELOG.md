@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.4.1 - 2026-04-28
+- Updated Markdown documentation set to reflect current executable prototype structure.
+- Expanded repository file inventory in `README.md`.
+- Updated install status and quick-start guidance in `INSTALL.md`.
+- Extended project rationale in `WHY.md`.
+
 ## v1.2.0 - 2026-04-28
 - Full markdown revision pass completed.
 - Added normalized metadata and mandatory sections in `SPECIFICATIONS.md` and `SPECIFICATIONS_FR.md`.
