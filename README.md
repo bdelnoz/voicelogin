@@ -85,7 +85,7 @@ Desktop:        XFCE
 Display manager: LightDM
 Auth layer:     PAM
 Audio stack:    ALSA / PipeWire / PulseAudio compatibility
-Python:         3.10+  (speaker verification, PIN handling)
+Python:         3.10+ (validated explicitly for 3.13.12 with strict venv checks)
 Shell:          POSIX-compatible scripts (installer, control tool)
 ```
 
@@ -283,3 +283,10 @@ This repository now includes a first executable baseline:
 - venv-first dependency model (`.venv` for dev, `/opt/voice-login/venv` for system install).
 
 All authentication logic remains prototype-level and fail-closed by default.
+
+
+## Strict venv requirement
+
+All prerequisite, install, and doctor checks enforce a mandatory virtual environment workflow.
+For Python 3.13.12, compatibility is validated by real module imports (`numpy`, `scipy`, `sounddevice`, `argon2`, `torch`, `speechbrain`) inside venv.
+Global `pip` installation is not allowed by project policy.

@@ -14,3 +14,9 @@
 - Added Python prototype commands (`voice-loginctl`, helper/enroll/test/pin-change stubs).
 - Added `.gitignore` and `requirements.txt` for local dev/runtime dependency control.
 - Updated `SPECIFICATIONS.md`, `SPECIFICATIONS_FR.md`, and `SPECIFICATIONS_GLOBAL.md` to reflect approved behavior.
+
+## v1.4.0 - 2026-04-28
+- Hardened `scripts/check_prerequis.sh` with strict venv creation/pip/module import checks and explicit Python 3.13.12 handling.
+- Hardened `scripts/install.sh` to refuse global pip usage, require venv success, and fail on critical import incompatibility.
+- Implemented real `voice-loginctl doctor` checks with non-zero exit on failures.
+- Synchronized specification and documentation files for mandatory venv + Python 3.13.12 behavior.

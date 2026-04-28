@@ -21,3 +21,8 @@ The project intends to support Debian/Kali Linux with XFCE + LightDM and PAM.
    - `scripts/simulate.sh --help`
 
 Use `--exec` only in controlled root environment.
+
+## Python and venv policy
+- Python virtual environment is mandatory.
+- The installer uses only `"$VENV_DIR/bin/python" -m pip ...` for dependency installation.
+- Python 3.13.12 is explicitly validated through critical module import checks.

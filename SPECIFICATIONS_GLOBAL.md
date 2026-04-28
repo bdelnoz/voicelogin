@@ -2,14 +2,14 @@
 Document : SPECIFICATIONS_GLOBAL.md
 Author : Bruno DELNOZ
 Email : bruno.delnoz@protonmail.com
-Version : v1.1.0
-Date : 2026-04-28 00:00:00 UTC
+Version : v1.2.0
+Date : 2026-04-28 12:00:00 UTC
 -->
 # SPECIFICATIONS_GLOBAL.md
 ## Purpose
 Global repository baseline for local voice-login project targeting Kali/Debian XFCE/LightDM with PAM.
 ## Global scope
-Documentation + implementation conventions, security model, venv-only Python policy, reversible auth integration.
+Documentation + implementation conventions, security model, venv-only Python policy including explicit Python 3.13.x verification, reversible auth integration.
 ## Stable verified repository behavior
 Voice path is optional and must never remove username/password fallback.
 ## Repository architecture
@@ -37,3 +37,5 @@ Cloud-mandatory auth, non-Linux targets, replacing standard password login.
 ## Changelog
 - v1.1.0 (2026-04-28 00:00:00 UTC, Bruno DELNOZ): Aligned global baseline with executable venv-first prototype architecture.
 - v1.0.0: Historical baseline entry preserved.
+
+- v1.2.0 (2026-04-28 12:00:00 UTC, Bruno DELNOZ): Added global baseline rule for strict venv checks and explicit Python 3.13.x module compatibility validation.

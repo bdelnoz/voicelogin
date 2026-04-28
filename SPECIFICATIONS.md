@@ -2,8 +2,8 @@
 Document : SPECIFICATIONS.md
 Author : Bruno DELNOZ
 Email : bruno.delnoz@protonmail.com
-Version : v1.2.0
-Date : 2026-04-28 00:00:00 UTC
+Version : v1.3.0
+Date : 2026-04-28 12:00:00 UTC
 -->
 # SPECIFICATIONS.md
 
@@ -11,7 +11,7 @@ Date : 2026-04-28 00:00:00 UTC
 Local voice biometric + PIN authentication path for XFCE/LightDM via PAM, optional and reversible, with password fallback always available.
 
 ## Scope
-Repository executable baseline: shell orchestration scripts, Python helpers/CLI, venv-only dependency model, simulation-first flow.
+Repository executable baseline: shell orchestration scripts, Python helpers/CLI, venv-only dependency model, simulation-first flow, and explicit Python 3.13.12 compatibility validation.
 
 ## Existing verified behavior
 Documentation-first repository was present without executable implementation; this task introduces baseline scripts and Python prototypes.
@@ -63,3 +63,5 @@ Cloud-required authentication, non-Linux targets, replacing standard password lo
 - v1.2.0 (2026-04-28 00:00:00 UTC, Bruno DELNOZ): Added executable baseline with venv-first policy and script/runtime inventory.
 - v1.1.0: Preserved historical entry.
 - v1.0.0: Preserved historical entry.
+
+- v1.3.0 (2026-04-28 12:00:00 UTC, Bruno DELNOZ): Enforced strict venv checks, critical import validation, and explicit Python 3.13.12 handling for prerequisites/install/doctor.
